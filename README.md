@@ -1,5 +1,4 @@
-# SpleetGUI
-
+![SpleetGUI_Logo](/images/logo.png)
 ## GUI version of Spleeter.
 With SpleetGUI you can separate audio files into instrumental and vocals using Spleeters AI algorithm,
 Possible from 2 stems (Instrumental/Vocals) 4 stems and 5 stems (Vocals/drums/bass/piano/ other) separation.
