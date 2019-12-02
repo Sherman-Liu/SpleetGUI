@@ -1,4 +1,4 @@
-#SpleetGUI
+# SpleetGUI
 
 GUI version of Spleeter https://github.com/deezer/spleeter
 Easy to use, all you have to do is install Python 3.7.5 (Make sure to select in PATH)
