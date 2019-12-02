@@ -11,7 +11,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Management;
 using System.Collections.ObjectModel;
-namespace spleeter
+namespace spleetGUI
 {
     public partial class Form1 : Form
     {
@@ -22,7 +22,7 @@ namespace spleeter
         public string seperation = "2stems";
         public Form1()
         {
-
+            
             
             InitializeComponent();
 
@@ -31,7 +31,14 @@ namespace spleeter
             backgroundWorker1.WorkerReportsProgress = true;
 
         }
-
+        private void LoadSettings()
+        {
+            if (Properties.Settings.Default.OutputPath != null)
+            {
+                output_folder = Properties.Settings.Default.OutputPath;
+            }
+          
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             checkifinstalled();
@@ -65,9 +72,19 @@ namespace spleeter
             Console.ReadLine();
 
         }
-        private void run_cmd_arg(string arg)
+
+        private void addtopath()
         {
 
+            const string name = "PATH";
+            string pathvar = System.Environment.GetEnvironmentVariable(name);
+            var value = pathvar + @";"+ Directory.GetCurrentDirectory();
+            var target = EnvironmentVariableTarget.Machine;
+            System.Environment.SetEnvironmentVariable(name, value, target);
+        }
+        private void run_cmd_arg(string arg)
+        {
+            
 
 
             System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -175,6 +192,9 @@ namespace spleeter
                 button5.Enabled = false;
                 button6.Enabled = false;
                 output_folder = folderBrowserDialog1.SelectedPath;
+                Properties.Settings.Default.OutputPath = output_folder;
+                Properties.Settings.Default.Save();
+
                 Console.WriteLine("spleeter separate -i '" + textBox1.Text + "' -p spleeter:" + seperation + " -o " + @output_folder);
                 Console.ReadLine();
 
@@ -362,6 +382,11 @@ namespace spleeter
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            addtopath();
         }
     }
 
