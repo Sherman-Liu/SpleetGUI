@@ -18,3 +18,5 @@ Command line version [deezer/Spleeter](https://github.com/deezer/spleeter).
 ## Donation
 If you like my work consider donating :)
 Paypal Donation: paypal.me/LazyOx199
+
+![SpleetGUI_Window](/images/window.JPG)
