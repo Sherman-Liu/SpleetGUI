@@ -84,6 +84,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.Enabled = false;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -279,12 +280,13 @@
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.button7.Location = new System.Drawing.Point(636, 510);
+            this.button7.Location = new System.Drawing.Point(676, 510);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(267, 23);
+            this.button7.Size = new System.Drawing.Size(227, 23);
             this.button7.TabIndex = 15;
-            this.button7.Text = "Getting an error? click here to add to path (ffmpeg)";
+            this.button7.Text = "Getting an error? click here to install ffmpeg\r\n\r\n";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1

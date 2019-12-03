@@ -4,9 +4,9 @@ With SpleetGUI you can separate audio files into instrumental and vocals using S
 Possible from 2 stems (Instrumental/Vocals) 4 stems and 5 stems (Vocals/drums/bass/piano/ other) separation.
 
 Easy to use, all you have to do is install **[Python 3.7.5](https://www.python.org/downloads/release/python-375/)** (Make sure to select in PATH)
-then download **[SpleetGUI](https://github.com/lazydevyo/SpleetGUI/releases)** and you are ready.
+then download **[SpleetGUI](https://github.com/lazydevyo/SpleetGUI/releases)** and you are ready. SpleetGUI is going to download Spleeter and install FFMPEG to PATH for you automatically.
 - Install Python 3.7.X or 3.6.X
-- Download and run SpleetGUI
+- Download and run SpleetGUI (As Administrator)
 - Start separating audio files
 
 

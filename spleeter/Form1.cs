@@ -35,6 +35,7 @@ namespace spleetGUI
         {
             if (Properties.Settings.Default.OutputPath != null)
             {
+               
                 output_folder = Properties.Settings.Default.OutputPath;
             }
           
@@ -78,9 +79,37 @@ namespace spleetGUI
 
             const string name = "PATH";
             string pathvar = System.Environment.GetEnvironmentVariable(name);
-            var value = pathvar + @";"+ Directory.GetCurrentDirectory();
+            var value = pathvar + @";"+ @"c:\ffmpeg";
             var target = EnvironmentVariableTarget.Machine;
             System.Environment.SetEnvironmentVariable(name, value, target);
+           
+
+
+        }
+        
+        private void InstallFFMPEG()
+        {
+
+
+            string installpath = @"c:\ffmpeg";
+
+            if (File.Exists(installpath + @"\ffmpeg.exe"))
+            {
+                Console.WriteLine("ffmpeg already installed");
+                label1.Text = "ffmpeg already installed";
+                return;
+            }
+
+            addtopath();
+            DirectoryInfo di = Directory.CreateDirectory(installpath);
+            Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(installpath));
+
+            File.Copy(Directory.GetCurrentDirectory() + @"\ffmodule\ffmpeg.exe", installpath + @"\ffmpeg.exe");
+            File.Copy(Directory.GetCurrentDirectory() + @"\ffmodule\ffplay.exe", installpath + @"\ffplay.exe");
+            File.Copy(Directory.GetCurrentDirectory() + @"\ffmodule\ffprobe.exe", installpath + @"\ffprobe.exe");
+            Console.WriteLine("ffmpeg suscefuly installed");
+            label1.Text = "ffmpeg suscefully installed";
+            
         }
         private void run_cmd_arg(string arg)
         {
@@ -153,7 +182,7 @@ namespace spleetGUI
             } else if (status == 1) {
                label1.Text = "Splitting Finished";
                 button1.Enabled = true;
-                button2.Enabled = true;
+               // button2.Enabled = true;
                 button3.Enabled = true;
                 button4.Enabled = true;
                 button5.Enabled = true;
@@ -185,12 +214,19 @@ namespace spleetGUI
             }
             else
             {
+
+                InstallFFMPEG();
+
+
+
                 button1.Enabled = false;
                 button2.Enabled = false;
                 button3.Enabled = false;
                 button4.Enabled = false;
                 button5.Enabled = false;
                 button6.Enabled = false;
+
+
                 output_folder = folderBrowserDialog1.SelectedPath;
                 Properties.Settings.Default.OutputPath = output_folder;
                 Properties.Settings.Default.Save();
@@ -203,9 +239,9 @@ namespace spleetGUI
 
 
                 
-                arg_var = "spleeter separate -i '" + textBox1.Text + "' -p spleeter:" + seperation + " -o " + @output_folder;
+                arg_var = "spleeter separate -i '" + textBox1.Text + "' -p spleeter:" + seperation + " -o " + "'" + @output_folder+"'";
 
-                 run_cmd_arg("spleeter separate -i '" + textBox1.Text + "' -p spleeter:" + seperation + " -o " + @output_folder);
+                 run_cmd_arg("spleeter separate -i '" + textBox1.Text + "' -p spleeter:" + seperation + " -o " + "'" + @output_folder + "'");
                // backgroundWorker1.RunWorkerAsync();
             }
         
@@ -255,7 +291,7 @@ namespace spleetGUI
                 FileName = "powershell.exe",
                 Arguments = "/c " + arg_var,
                 RedirectStandardOutput = true,
-                UseShellExecute = false,
+                UseShellExecute = true,
                 CreateNoWindow = true
             };
 
@@ -386,7 +422,7 @@ namespace spleetGUI
 
         private void button7_Click(object sender, EventArgs e)
         {
-            addtopath();
+            InstallFFMPEG();
         }
     }
 
